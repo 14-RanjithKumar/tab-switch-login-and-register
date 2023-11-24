@@ -1,0 +1,176 @@
+<!doctype html><html><head><style type="text/css">*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body{
+  background: linear-gradient(to right, rgba(52, 232, 158,0.7), rgba(15, 52, 67,0.5)),url('https://images.unsplash.com/photo-1584204559709-ca7d413229eb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGxlYWZ8ZW58MHwwfDB8fHww');
+  background-position: center;
+  /* background-size: cover; */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container button{
+  background: white;
+  width: 80px;
+  height: 30px;
+  border: none;
+  outline: none;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.container #logintopBtn{
+  background-color: #3A4D39;
+  color: white;
+}
+
+.container .tabs{
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .tabs{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.container .tabs .login_tab h4{
+  text-align: center;
+  margin: 10px 0;
+}
+
+.container .tabs .login_tab input{
+  outline: none;
+  width: 200px;
+  height: 30px;
+  margin: 5px 0;
+  padding-left: 3px;
+}
+
+.container .tabs .login_tab .loginBtn{
+  border-radius: 4px;
+  background-color: #3A4D39;
+  color: white;
+  height: 30px;
+  cursor: pointer;
+  margin: 5px 0;
+}
+
+.container .tabs .login_tab .loginBtn:hover{
+  background-color: white;
+  color: #3A4D39;
+  border: 1px solid #3A4D39;
+  transition: 0.7s;
+}
+
+.container .tabs .login_tab p{
+  margin: 5px 0;
+}
+
+.container .tabs .login_tab p a{
+   text-decoration: none;
+  color: #3A4D39;
+}
+
+.container .tabs .login_tab i{
+  position: relative;
+  right: 30px;
+  top: 1px;
+  font-size: 14px;
+}
+
+#Registration_tab{
+  display: none;
+}
+
+</style></head><body><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+	integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="container">
+	<button id="logintopBtn" onclick="loginDetails()">Login</button>
+	<button id="RegistertopBtn" onclick="registerDetails()">Register</button>
+	<div class="tabs">
+		<div class="login_tab" id="login_tab">
+			<h4>Login</h4>
+			<label for="login_username">Username</label> <br>
+			<input type="text" id="login_username" placeholder="Enter a username or email" required>
+			<br>
+			<label for="login_password">Password</label> <br>
+			<input type="password" id="login_password" placeholder="Enter a password" required><i class="fa-regular fa-eye-slash" id="togglePassword" onclick="showPassword()"></i><br>
+			<button id="loginBtn" class="loginBtn" type="submit"> Login </button>
+			<p><a href="#">forgot password</a></p>
+		</div>
+		<div class="login_tab" id="Registration_tab">
+			<h4>Register</h4>
+			<label for="login_username">Username</label> <br>
+			<input type="text" id="register_username" placeholder="Enter a username" required>
+			<br>
+			<label for="login_username">Email</label> <br>
+			<input type="email" id="Register_email" placeholder="Enter a email" required>
+      <br>
+			<label for="login_password">Password</label> <br>
+			<input type="password" id="register_password" placeholder="Enter a password" required><i class="fa-regular fa-eye-slash" id="displayPassword" onclick="displayPassword()"></i><br>
+			<button id="registerBtn" class="loginBtn" type="submit"> Register </button>
+		</div>
+	</div>
+</div><script type="text/javascript">let logintopBtn = document.getElementById('logintopBtn');
+let RegistertopBtn = document.getElementById('RegistertopBtn');
+
+const login_tab = document.getElementById('login_tab');
+const Registration_tab = document.getElementById('Registration_tab');
+
+let togglePassword = document.getElementById('togglePassword');
+let password = document.getElementById('displayPassword');
+
+let login_password = document.getElementById('login_password');
+let register_password = document.getElementById('register_password');
+
+function registerDetails(){
+  login_tab.style.display = "none";
+  Registration_tab.style.display = "block";
+  logintopBtn.style.background = "white";
+  logintopBtn.style.color = "#3A4D39";
+  RegistertopBtn.style.background = "#3A4D39";
+  RegistertopBtn.style.color = "white";
+  Registration_tab.style.transition = "1s";
+}
+
+function loginDetails() {
+  login_tab.style.display = "block";
+  login_tab.style.transition = "1s";
+  Registration_tab.style.display = "none";
+  logintopBtn.style.background = "#3A4D39";
+  logintopBtn.style.color = "white";
+  RegistertopBtn.style.background = "white";
+  RegistertopBtn.style.color = "#3A4D39";
+}
+
+function showPassword(){
+  if (togglePassword.className == "fa-regular fa-eye-slash"){
+    togglePassword.className = "fa-regular fa-eye";
+    login_password.type = "text";
+  }else{
+    togglePassword.className = "fa-regular fa-eye-slash";
+    login_password.type = "password";
+  }
+}
+
+function displayPassword() {
+  if (password.className == "fa-regular fa-eye-slash"){
+    password.className = "fa-regular fa-eye";
+    register_password.type = "text";
+  } else {
+    password.className = "fa-regular fa-eye-slash";
+    register_password.type = "password";
+  }
+}</script></body><html>
